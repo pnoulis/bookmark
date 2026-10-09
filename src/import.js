@@ -33,7 +33,7 @@ const bookmarksfile = createWriteStream(process.env.BOOKMARKSPATH, {
 const bookmarks = convert(resourceJSON);
 const tags = require("./tags.js");
 
-bookmarksfile.on("close", (...args) => {
+bookmarksfile.on("close", () => {
   console.log(`${process.argv[1]}: ${bookmarks.length} new bookmarks imported!`);
   process.exit(0);
 });
