@@ -67,7 +67,7 @@ main() {
 bookmark_add() {
     url="$1"
     tags="${@:2}"
-    if [[ -z "$url" || -z "$tags" ]]; then
+    if [[ -z "$url" ]]; then
         fatal "Mising arguments"
     fi
     printf "%s,,%s\n" "$url" "${tags}"  >> "$bookmarkspath"
