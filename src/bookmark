@@ -53,7 +53,7 @@ main() {
 
     mkdir -p "$bookmarkdatadir"
     if [ ! -f "$bookmarkspath" ]; then
-        echo 'url,tags' > "$bookmarkspath"
+        echo 'url,title,tags' > "$bookmarkspath"
     fi
 
     if [ ! "$subcommand" ]; then
@@ -68,12 +68,12 @@ bookmark_add() {
     if [[ -z "$url" || -z "$tags" ]]; then
         fatal "Mising arguments"
     fi
-    printf "%s,%s\n" "$url" "${tags}"  >> "$bookmarkspath"
+    printf "%s,,%s\n" "$url" "${tags}"  >> "$bookmarkspath"
 }
 
 bookmark_search() {
     if [ -v "$CALLED_WITHIN" ]; then
-        $FUZZY_SEARCH_PROGRAM < "$bookmarkspath" | {
+        $FUZZY_SEARCH_PROGRAM < <(tail -n +2 "$bookmarkspath") | {
             IFS=, read -r -a line
             wl-copy "${line[1]}"
         }
