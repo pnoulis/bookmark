@@ -1,0 +1,177 @@
+#!/usr/bin/env bash
+
+usage() {
+    cat <<EOF
+NAME
+     bookmark - Store, retrieve and open bookmarks
+
+SYNOPSIS
+     bookmark [OPTION]... {add|search} [ARGUMENT]...
+
+DESCRIPTION
+
+    I designed bookmark to relieve myself from the mouse but that is not the
+    only benefit.
+
+    - Searching bookmarks through a tag based system becomes effortless
+    - Saving a new bookmark and adding tags is trivial
+    - No longer will bookmarks need to be transfered, kept in sync or get lost
+    - Keyboard driven, mouse be gone!!!
+    - Control over which applications and how are used to open the bookmarks
+
+OPTIONS
+    -h, --help
+        Display usage information and exit
+
+    -v, --version
+        Show program version and exit
+
+EXAMPLES
+    bookmark add url [tags]...
+    bookmark search
+EOF
+}
+
+# Compilation constants
+TERMINAL_PROGRAM=/usr/bin/foot
+FUZZY_SEARCH_PROGRAM=/usr/bin/fzf
+CLIPBOARD_COPY_PROGRAM=wl-copy
+
+# Runtime variables
+usrdatadir="${XDG_DATA_HOME:-${HOME}/.local/share}"
+bookmarkdatadir="${usrdatadir}/__APPID__"
+bookmarkspath="${bookmarkdatadir}/__BOOKMARKS_FILENAME__"
+
+# User options
+subcommand=
+
+main() {
+    set -o errexit
+
+    SCRIPTDIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" 2>/dev/null && pwd)"
+    cli_parse_argv "$@"
+
+    mkdir -p "$bookmarkdatadir"
+    if [ ! -f "$bookmarkspath" ]; then
+        echo 'url,tags' > "$bookmarkspath"
+    fi
+
+    if [ ! "$subcommand" ]; then
+        fatal "Missing subcommand argument"
+    fi
+    bookmark_$subcommand "${POSARGS[@]}"
+}
+
+bookmark_add() {
+    url="$1"
+    tags="${@:2}"
+    if [[ -z "$url" || -z "$tags" ]]; then
+        fatal "Mising arguments"
+    fi
+    printf "%s,%s\n" "$url" "${tags}"  >> "$bookmarkspath"
+}
+
+bookmark_search() {
+    if [ -v "$CALLED_WITHIN" ]; then
+        $FUZZY_SEARCH_PROGRAM < "$bookmarkspath" | {
+            IFS=, read -r -a line
+            wl-copy "${line[1]}"
+        }
+        exit 0
+    fi
+    CALLED_WITHIN=0 $TERMINAL_PROGRAM -- $0 search
+}
+
+# Colors for output
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+YELLOW='\033[1;33m'
+NC='\033[0m' # No Color
+
+fatal() {
+    echo -e "$0: ${RED}[ERROR]${NC} $@" >&2
+    exit 1
+}
+
+warn() {
+    echo -e "$0: ${YELLOW}[WARN]${NC} $@" >&2
+}
+
+info() {
+    echo -e "$0: ${GREEN}[INFO]${NC} $@"
+}
+
+cli_parse_argv() {
+    declare -ga POSARGS=()
+    _param=
+    while (($# > 0)); do
+        case "${1:-}" in
+            add)
+                subcommand=add
+                shift
+                POSARGS+=("$@")
+                break
+                ;;
+            search)
+                subcommand=search
+                shift
+                POSARGS+=("$@")
+                break
+                ;;
+            -h | --help)
+                usage
+                exit 0
+                ;;
+            -[a-zA-Z][a-zA-Z]*)
+                local i="${1:-}"
+                shift
+                local rest="$@"
+                set --
+                for i in $(echo "$i" | grep -o '[a-zA-Z]'); do
+                    set -- "$@" "-$i"
+                done
+                set -- $@ $rest
+                continue
+                ;;
+            --)
+                shift
+                POSARGS+=("$@")
+                ;;
+            -[a-zA-Z]* | --[a-zA-Z]*)
+                fatal "Unrecognized argument ${1:-}"
+                ;;
+            *)
+                POSARGS+=("${1:-}")
+                ;;
+        esac
+        shift
+    done
+    unset _param
+}
+
+cli_parse_arg() {
+    _param=
+    local name value
+    local -i toshift=0
+
+    if (($# == 0)); then
+        return $toshift
+    elif [[ "$1" =~ .*=.* ]]; then
+        name="${1%%=*}"
+        value="${1#*=}"
+    elif [[ "${2-}" =~ ^[^-].+ ]]; then
+        name="$1"
+        value="$2"
+        ((toshift++))
+    fi
+
+    if [[ -z "${value-}" && ! "${OPTIONAL-}" ]]; then
+        fatal "${name:-$1} requires an argument"
+    fi
+
+    _param="${value:-}"
+    return $toshift
+}
+
+main "$@"
+
