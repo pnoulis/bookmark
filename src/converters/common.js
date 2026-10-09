@@ -1,5 +1,3 @@
-import { join } from 'node:path';
-
 export function normalizeBookmark(bookmark) {
   // 1. Strip search query parameters
   // 2. Decode

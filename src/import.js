@@ -24,22 +24,21 @@ try {
 if (!process.env.BOOKMARKSPATH) {
   throw new Error(`${process.argv[1]}: Missing bookmarks output file`)
 }
-
-const bookmarks = convert(resourceJSON);
-const tags = require("./tags.js");
-
 const { createWriteStream } = require("node:fs");
-
 const bookmarksfile = createWriteStream(process.env.BOOKMARKSPATH, {
   flags: "a",
   encoding: "utf8",
 });
+
+const bookmarks = convert(resourceJSON);
+const tags = require("./tags.js");
 
 bookmarksfile.on("close", (...args) => {
   console.log(`${process.argv[1]}: ${bookmarks.length} new bookmarks imported!`);
   process.exit(0);
 });
 
+// Handle callback based asynchronisity by utilizing recursion
 writeData(0);
 
 function writeData(i) {

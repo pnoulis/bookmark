@@ -1,13 +1,12 @@
 #!/usr/bin/env make
 
-SHELL								= /usr/bin/bash
+SHELL									= /usr/bin/bash
 .DEFAULT_GOAL: all
 .DELETE_ON_ERROR:
 
 APPID									= bookmark
 SRCDIR_TOP						= .
 SRCDIR								= $(SRCDIR_TOP)/src
-MODE									= dev
 BOOKMARKS_FILENAME		= bookmarks.csv
 
 # Installation directories
@@ -60,7 +59,7 @@ $(ENV): $(SRCDIR)/env.m4
 	$(M4) $(M4FLAGS) $< > $@
 
 $(BOOKMARK_IMPORT): $(SRCDIR)/import.js $(SRCDIR)/converters/*
-	$(ESBUILD) $< --bundle --platform=node --target=es2024 --minify > $@
+	$(ESBUILD) $< --bundle --platform=node --target=$(ECMA_VERSION) --minify > $@
 	chmod 775 $@
 
 $(INSTALL_HELPER):
