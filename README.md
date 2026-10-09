@@ -10,6 +10,10 @@ extremely fast and effortless
 keyboard driven (damned be thy mouse)
 define actions for opening bookmarks
 
+### Demo
+
+<video src="samples/add-and-search-demo.mp4" controls="controls" muted="muted" width="100%"></video>
+
 ## Planned Features & Roadmap
 
 ### Adding bookmarks
