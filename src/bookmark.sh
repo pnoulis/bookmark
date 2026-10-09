@@ -29,13 +29,15 @@ OPTIONS
 EXAMPLES
     bookmark add url [tags]...
     bookmark search
+    bookmark import firefox <path to bookmarks backup>
 EOF
 }
 
 # Compilation constants
-TERMINAL_PROGRAM=/usr/bin/foot
-FUZZY_SEARCH_PROGRAM=/usr/bin/fzf
-CLIPBOARD_COPY_PROGRAM=wl-copy
+TERMINAL_EXE=__TERMINAL_EXE__
+FUZZY_SEARCH_EXE=__FUZZY_SEARCH_EXE__
+CLIPBOARD_COPY_EXE=__CLIPBOARD_COPY_EXE__
+NODE_EXE=__NODE_EXE__
 
 # Runtime variables
 usrdatadir="${XDG_DATA_HOME:-${HOME}/.local/share}"
@@ -73,13 +75,23 @@ bookmark_add() {
 
 bookmark_search() {
     if [ -v "$CALLED_WITHIN" ]; then
-        $FUZZY_SEARCH_PROGRAM < <(tail -n +2 "$bookmarkspath") | {
+        $FUZZY_SEARCH_EXE < <(tail -n +2 "$bookmarkspath") | {
             IFS=, read -r -a line
-            wl-copy "${line[1]}"
+            $CLIPBOARD_COPY_EXE "${line[0]}"
         }
         exit 0
     fi
-    CALLED_WITHIN=0 $TERMINAL_PROGRAM -- $0 search
+    CALLED_WITHIN=0 $TERMINAL_EXE -- $0 search
+}
+
+bookmark_import() {
+    distributor="$1"
+    resource="$2"
+    if [[ -z "$distributor" || -z "$resource" ]]; then
+        fatal "Mising arguments"
+    fi
+    BOOKMARKSPATH="$bookmarkspath" $NODE_EXE __APPLIBEXECDIR__/import.js \
+                 "$distributor" "$resource"
 }
 
 # Colors for output

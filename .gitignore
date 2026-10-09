@@ -1,1 +1,9 @@
+# Development files
+scratch.js
+tmp/
+
+# Build artifacts
 /bookmark
+/install.system
+/import
+/env

@@ -1,0 +1,271 @@
+{
+  "guid": "root________",
+  "title": "",
+  "index": 0,
+  "dateAdded": 1759824959606000,
+  "lastModified": 1791492577308000,
+  "id": 1,
+  "typeCode": 2,
+  "type": "text/x-moz-place-container",
+  "root": "placesRoot",
+  "children": [
+    {
+      "guid": "menu________",
+      "title": "menu",
+      "index": 0,
+      "dateAdded": 1759824959606000,
+      "lastModified": 1759824959851000,
+      "id": 2,
+      "typeCode": 2,
+      "type": "text/x-moz-place-container",
+      "root": "bookmarksMenuFolder",
+      "children": [
+        {
+          "guid": "fOBa2flJ2dze",
+          "title": "Mozilla Firefox",
+          "index": 0,
+          "dateAdded": 1759824959851000,
+          "lastModified": 1762387221000000,
+          "id": 7,
+          "typeCode": 2,
+          "type": "text/x-moz-place-container",
+          "children": [
+            {
+              "guid": "qSuBS25ry-ol",
+              "title": "Get Help",
+              "index": 0,
+              "dateAdded": 1759824959851000,
+              "lastModified": 1762387221000000,
+              "id": 8,
+              "typeCode": 1,
+              "iconUri": "fake-favicon-uri:https://support.mozilla.org/products/firefox",
+              "type": "text/x-moz-place",
+              "uri": "https://support.mozilla.org/products/firefox"
+            },
+            {
+              "guid": "xKbnX_e3b3R-",
+              "title": "Customize Firefox",
+              "index": 1,
+              "dateAdded": 1759824959851000,
+              "lastModified": 1762387221000000,
+              "id": 9,
+              "typeCode": 1,
+              "iconUri": "fake-favicon-uri:https://support.mozilla.org/kb/customize-firefox-controls-buttons-and-toolbars?utm_source=firefox-browser&utm_medium=default-bookmarks&utm_campaign=customize",
+              "type": "text/x-moz-place",
+              "uri": "https://support.mozilla.org/kb/customize-firefox-controls-buttons-and-toolbars?utm_source=firefox-browser&utm_medium=default-bookmarks&utm_campaign=customize"
+            },
+            {
+              "guid": "ZOY3YYBhUwrD",
+              "title": "Get Involved",
+              "index": 2,
+              "dateAdded": 1759824959851000,
+              "lastModified": 1762387221000000,
+              "id": 10,
+              "typeCode": 1,
+              "iconUri": "fake-favicon-uri:https://www.mozilla.org/contribute/",
+              "type": "text/x-moz-place",
+              "uri": "https://www.mozilla.org/contribute/"
+            },
+            {
+              "guid": "KGbWdSlACSaL",
+              "title": "About Us",
+              "index": 3,
+              "dateAdded": 1759824959851000,
+              "lastModified": 1762387221000000,
+              "id": 11,
+              "typeCode": 1,
+              "iconUri": "fake-favicon-uri:https://www.mozilla.org/about/",
+              "type": "text/x-moz-place",
+              "uri": "https://www.mozilla.org/about/"
+            }
+          ]
+        },
+        {
+          "guid": "3si6tiQhMhMC",
+          "title": "Recent Tags",
+          "index": 1,
+          "dateAdded": 1538760743586000,
+          "lastModified": 1759924146000000,
+          "id": 12,
+          "typeCode": 1,
+          "type": "text/x-moz-place",
+          "uri": "place:type=6&sort=14&maxResults=10"
+        },
+        {
+          "guid": "QmjFD9xXwMbz",
+          "title": "",
+          "index": 2,
+          "dateAdded": 1538760743672000,
+          "lastModified": 1759924146000000,
+          "id": 13,
+          "typeCode": 3,
+          "type": "text/x-moz-place-separator"
+        },
+        {
+          "guid": "2tNJzw0Kcv8C",
+          "title": "Recent Tags",
+          "index": 3,
+          "dateAdded": 1511370140285000,
+          "lastModified": 1759924146000000,
+          "id": 14,
+          "typeCode": 1,
+          "type": "text/x-moz-place",
+          "uri": "place:type=6&sort=14&maxResults=10"
+        },
+        {
+          "guid": "PTajOMiIzhE2",
+          "title": "",
+          "index": 4,
+          "dateAdded": 1511370140719000,
+          "lastModified": 1759924146000000,
+          "id": 15,
+          "typeCode": 3,
+          "type": "text/x-moz-place-separator"
+        }
+      ]
+    },
+    {
+      "guid": "toolbar_____",
+      "title": "toolbar",
+      "index": 1,
+      "dateAdded": 1759824959606000,
+      "lastModified": 1791492577308000,
+      "id": 3,
+      "typeCode": 2,
+      "type": "text/x-moz-place-container",
+      "root": "toolbarFolder",
+      "children": [
+        {
+          "guid": "x8zIRNIn5Q0M",
+          "title": "folder1",
+          "index": 0,
+          "dateAdded": 1791191184511000,
+          "lastModified": 1791441977476000,
+          "id": 469,
+          "typeCode": 2,
+          "type": "text/x-moz-place-container",
+          "children": [
+            {
+              "guid": "SssQbBQopCfJ",
+              "title": "google",
+              "index": 7,
+              "dateAdded": 1791441977476000,
+              "lastModified": 1791441977476000,
+              "id": 485,
+              "typeCode": 1,
+              "iconUri": "",
+              "type": "text/x-moz-place",
+              "uri": "https://google.com"
+            }
+          ]
+        },
+        {
+          "guid": "fDBAjWR1ZdMg",
+          "title": "folder2",
+          "index": 1,
+          "dateAdded": 1790423138441000,
+          "lastModified": 1790423152495000,
+          "id": 447,
+          "typeCode": 2,
+          "type": "text/x-moz-place-container",
+          "children": [
+            {
+              "guid": "SssQbBQopCfJ",
+              "title": "The gnu operating system",
+              "index": 7,
+              "dateAdded": 1791441977476000,
+              "lastModified": 1791441977476000,
+              "id": 485,
+              "typeCode": 1,
+              "iconUri": "",
+              "type": "text/x-moz-place",
+              "uri": "https://gnu.org"
+            }
+          ]
+        },
+        {
+          "guid": "IXSv6klGkqD3",
+          "title": "folder3",
+          "index": 2,
+          "dateAdded": 1790361156219000,
+          "lastModified": 1790860861261000,
+          "id": 445,
+          "typeCode": 2,
+          "type": "text/x-moz-place-container",
+          "children": [
+            {
+              "guid": "SssQbBQopCfJ",
+              "title": "Intrinsic cream",
+              "index": 7,
+              "dateAdded": 1791441977476000,
+              "lastModified": 1791441977476000,
+              "id": 485,
+              "typeCode": 1,
+              "iconUri": "",
+              "type": "text/x-moz-place",
+              "uri": "https://intrinsic-cream.org"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "guid": "unfiled_____",
+      "title": "unfiled",
+      "index": 3,
+      "dateAdded": 1759824959606000,
+      "lastModified": 1780027944349000,
+      "id": 5,
+      "typeCode": 2,
+      "type": "text/x-moz-place-container",
+      "root": "unfiledBookmarksFolder",
+      "children": []
+    },
+    {
+      "guid": "mobile______",
+      "title": "mobile",
+      "index": 4,
+      "dateAdded": 1759824959621000,
+      "lastModified": 1759824959848000,
+      "id": 6,
+      "typeCode": 2,
+      "type": "text/x-moz-place-container",
+      "root": "mobileFolder",
+      "children": [
+        {
+          "guid": "bDyqlzchHiba",
+          "title": "Firefox: About your browser",
+          "index": 0,
+          "dateAdded": 1584670956834000,
+          "lastModified": 1759924146000000,
+          "id": 262,
+          "typeCode": 1,
+          "type": "text/x-moz-place",
+          "uri": "about:firefox"
+        },
+        {
+          "guid": "Kk-JX3ac4-UT",
+          "title": "Firefox: Customise with add-ons",
+          "index": 1,
+          "dateAdded": 1584670956834000,
+          "lastModified": 1759924146000000,
+          "id": 263,
+          "typeCode": 1,
+          "type": "text/x-moz-place",
+          "uri": "https://addons.mozilla.org/android?utm_source=inproduct&utm_medium=default-bookmarks&utm_campaign=mobileandroid"
+        },
+        {
+          "guid": "Fjfv3-4qQOEH",
+          "title": "Firefox: Support",
+          "index": 2,
+          "dateAdded": 1584670956834000,
+          "lastModified": 1759924146000000,
+          "id": 264,
+          "typeCode": 1,
+          "type": "text/x-moz-place",
+          "uri": "https://support.mozilla.org/products/mobile?utm_source=inproduct&utm_medium=default-bookmarks&utm_campaign=mobileandroid"
+        }
+      ]
+    }
+  ]
+}
