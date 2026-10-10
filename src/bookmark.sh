@@ -78,9 +78,17 @@ bookmark_search() {
         $FUZZY_SEARCH_EXE < <(tail -n +2 "$bookmarkspath") | {
             IFS=, read -r -a line
             $CLIPBOARD_COPY_EXE "${line[0]}"
+            $BROWSER --new tab "${line[0]}"
+            swaymsg "[app_id=\"$BROWSER.*\"]" focus
         }
         exit 0
     fi
+
+    # Check if the $BROWSER variable is set
+    if [[ -z "${BROWSER:-}" ]]; then
+        fatal "The url cannot be opened if the BROWSER environment variable is undefined"
+    fi
+
     CALLED_WITHIN=0 $TERMINAL_EXE -- $0 search
 }
 

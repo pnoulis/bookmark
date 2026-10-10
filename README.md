@@ -21,7 +21,9 @@ independent of browsers.
 
 ### Opening bookmarks
 
-- [ ] Open bookmarks without the need to copy them to the url address bar
+- [X] Open bookmarks without the need to copy them to the url address bar
+      The url is opened with the browser specified in the conventional $BROWSER
+      environment variable
 
 ### Editing bookmarks
 
